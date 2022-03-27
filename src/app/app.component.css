@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+}
+img{
+    object-fit: cover;
+}
+.chat main::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background:#D9DFE4  ;
+    border-radius: 10px;
+}

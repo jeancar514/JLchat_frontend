@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+@media (max-width: 768px) {  
+    .mostrar{
+        display: block
+    }
+    .ocultar{
+        display: none
+    }
+}
+
+@media (min-width: 768px) {  
+    .moverFormulario{
+        left:calc(52%);
+    }
+}
+.deshabilitado{
+    cursor: not-allowed;
+}

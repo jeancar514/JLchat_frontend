@@ -1,0 +1,87 @@
+<header class="container flex">
+    <h1 class=" 
+    bg-gradient-to-r from-pink-500 to-yellow-500
+        font-black 
+        tracking-wider
+        text-white
+        text-6xl
+        md:text-7xl
+        inline
+        p-4
+        mb-2
+        border-r-2
+        border-b-2">JLchat</h1>
+</header>
+
+<main class="w-full p-5 m-auto mt-14 md:mt-24 relative">
+
+    <div class="w-full max-w-5xl m-auto relative">
+        <div class=" max-w-sm md:max-w-none w-full py-3 px-5 m-auto md:m-0 h-96 md:h-auto flex flex-col md:flex-row justify-center bg-slate-800 bg-opacity-50">
+            <div class="grow m-0 md:my-24 md:mx-10  md:static text-white transition-all duration-500 md:block hidden opacity-100" [ngClass]="{mostrar: registro}">
+                <h3 class="text-2xl font-normal">¿Ya tienes una cuenta?</h3>
+                <p class="mt-7 text-base font-light">Inicia sesión para entrar en la página</p>
+                <button class="mt-7 p-3 rounded-lg text-lg font-semibold cursor-pointer outline-none transition-all duration-300
+                        bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+                        (click)="cambiarFormulario()">Iniciar Sesión</button>
+            </div>
+            <div class="grow m-0 md:my-24 md:mx-10 md:static text-white transition-all duration-500 block" [ngClass]="{ocultar: registro}">
+                <h3 class="text-2xl font-normal">¿Aún no tienes una cuenta?</h3>
+                <p class="mt-7 text-base font-light">Regístrate para que puedas iniciar sesión</p>
+                <button class="mt-7 p-3 rounded-lg text-lg font-semibold cursor-pointer outline-none transition-all duration-300
+                bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+                (click)="cambiarFormulario()" >Regístrarse</button>
+            </div>
+        </div>
+
+        <!--Formulario de Login y registro-->
+        <div class="flex items-center w-full max-w-md md:max-w-xs  intmd:max-w-sm lg:max-w-md relative 
+                m-auto md:m-0 bottom-32 md:bottom-56 right-0 md:left-8 intmd:bottom-48 transition-left duration-500 ease-rebote"
+                [ngClass]="{moverFormulario: registro}">
+            <!--Login-->
+            <form  class="w-full py-5 md:py-24 px-5 bg-white  
+                        relative md:absolute rounded-3xl block" 
+                        *ngIf="!registro; else login"
+                        [formGroup]="loginForm">
+                <h2 class="text-4xl font-bold text-center mb-5
+                bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500">Iniciar Sesión</h2>
+                <input type="email" placeholder="Correo Electronico" formControlName="email"
+                        class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                <div *ngIf="emailLogin.invalid && (emailLogin.touched || emailLogin.dirty)">
+                    <p *ngIf="emailLogin.hasError('email')" class="text-red-500">El email es invalido</p>
+                    <p *ngIf="emailLogin.hasError('required')" class="text-red-500">El campo es obligatorio</p>
+                </div>
+                <input type="password" placeholder="Contraseña" formControlName="contraseña"
+                class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                <div *ngIf="contrasenaLogin.invalid && (contrasenaLogin.touched || contrasenaLogin.dirty)">
+                    <p *ngIf="contrasenaLogin.hasError('minlength')" class="text-red-500">Debe tener minimo  4 caracteres</p>
+                    <p *ngIf="contrasenaLogin.hasError('required')" class="text-red-500">El campo es obligatorio</p>
+                </div>
+                <button type="submit" [ngClass]="{ deshabilitado: true === loginForm.invalid }"  class="p-3 mt-5 border-none text-lg rounded-lg  font-semibold cursor-pointer text-white outline-none
+                        bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-green-400 hover:to-blue-500">Entrar</button>
+            </form>
+
+            <!--Register-->
+            <ng-template #login>
+                <form action="" class="w-full py-5 md:py-14 px-5 bg-white  
+                            relative md:absolute rounded-3xl block" 
+                            >
+                    <h2 class="text-4xl font-bold text-center mb-5
+                    bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500">Regístrarse</h2>
+                    <input type="text" placeholder="Nombre completo" 
+                            class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                    <input type="email" placeholder="Correo Electronico" 
+                            class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                    <input type="text" placeholder="Usuario" 
+                            class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                    <input type="password" placeholder="Contraseña" 
+                            class="w-full mt-5 p-3 border-none bg-slate-200 text-base outline-none">
+                    <button type="submit" class="p-3 mt-5 border-none text-lg rounded-lg  font-semibold cursor-pointer text-white outline-none
+                    bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-green-400 hover:to-blue-500">Regístrarse</button>
+                </form>
+            
+            </ng-template>
+            
+        </div>
+    </div>
+
+</main>

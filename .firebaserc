@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "jlchat-3aedd": {
+      "hosting": {
+        "JLchat": [
+          "jlchat-3aedd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "jlchat-3aedd"
+  }
+}
